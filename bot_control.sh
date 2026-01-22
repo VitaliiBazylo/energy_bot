@@ -4,6 +4,7 @@
 # Використання: ./bot_control.sh {start|stop|restart|status|logs}
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+VENV_PATH="$HOME/venv310"
 cd "$SCRIPT_DIR"
 
 PID_FILE="$SCRIPT_DIR/bot.pid"
@@ -23,7 +24,7 @@ start_bot() {
     echo "🤖 Запуск бота у фоні..."
     
     # Активація віртуального середовища та запуск
-    source .venv/bin/activate
+    source "$VENV_PATH/bin/activate"
     nohup python main.py > "$LOG_FILE" 2>&1 &
     
     PID=$!

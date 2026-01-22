@@ -2,9 +2,10 @@
 
 # Скрипт моніторингу та автоперезапуску бота
 # Використання: додайте в crontab для автоматичного моніторингу
-# */5 * * * * /path/to/EnergyBot/monitor_bot.sh
+# */5 * * * * /home3/tstcomua/dev.tst.com.ua/EnergyBot/monitor_bot.sh
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+VENV_PATH="$HOME/venv310"
 LOG_FILE="$SCRIPT_DIR/monitor.log"
 
 cd "$SCRIPT_DIR"
@@ -19,7 +20,7 @@ else
     echo "$(date): ❌ Бот не працює! Перезапуск..." >> "$LOG_FILE"
     
     # Запускаємо бота
-    source .venv/bin/activate
+    source "$VENV_PATH/bin/activate"
     nohup python main.py > bot.log 2>&1 &
     BOT_PID=$!
     
