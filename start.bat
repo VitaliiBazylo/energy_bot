@@ -28,8 +28,7 @@ echo Для зупинки натисніть Ctrl+C
 echo ========================================
 echo.
 
-call .venv\Scripts\activate.bat
-python main.py
+"%~dp0.venv\Scripts\python.exe" "%~dp0main.py"
 
 if %errorlevel% neq 0 (
     echo.
